@@ -67,7 +67,9 @@ def render_single_page(root, build_folder, j2_rel_path, yaml_rel_path, output_pa
         termcolor.cprint("[-] Cannot find Jinja2 template at {}".format(j2_abs_path), "red")
         sys.exit(1)
     try:
-        j2_obj = jinja2.Environment(loader=jinja2.FileSystemLoader(".", followlinks=False)).get_template(j2_rel_path)
+        j2_obj = jinja2.Environment(
+            loader=jinja2.FileSystemLoader(".", followlinks=False),
+            undefined=jinja2.StrictUndefined).get_template(j2_rel_path)
     except jinja2.TemplateNotFound as ex:
         termcolor.cprint("[-] Error reading Jinja2 template : {}".format(ex))
         sys.exit(1)
@@ -79,7 +81,7 @@ def render_single_page(root, build_folder, j2_rel_path, yaml_rel_path, output_pa
     try:
         yaml_obj = yaml.load(open(yaml_abs_path, "r"))
         html = j2_obj.render(yaml_obj)
-    except yaml.YAMLError as ex:
+    except Exception as ex:
         termcolor.cprint("[-] Cannot parse file {} due to {}!".format(yaml_abs_path, ex))
         sys.exit(1)
 
