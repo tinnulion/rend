@@ -1,0 +1,7 @@
+text:
+  title: Hello World!
+  content: Here goes a kitty and a doggy!
+
+img:
+  kitty: "example/pretty_kitty.jpg"
+  doggy: "example/ugly_doggy.jpg"
