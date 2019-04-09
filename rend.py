@@ -50,7 +50,8 @@ def read_config_file(root):
 
 def cleanup_build_folder(build_folder):
     try:
-        shutil.rmtree(build_folder, ignore_errors=False)
+        if os.path.exists(build_folder):
+	        shutil.rmtree(build_folder, ignore_errors=False)
     except Exception as ex:
         termcolor.cprint("Cannot cleanup build folder at {} due to the following error {}".format(build_folder, ex))
         sys.exit(1)
