@@ -2,6 +2,11 @@
 
 Everything one needs in the single file with ~ 175 lines of Python code.
 
+## How to start?
+
+Fork this repo, add HTML, images, CSS, JavaScript files to it, fill rend.conf, test how everything's working 
+commit, push, clone repo on remote server and generate website. Done.
+
 ## Filling in rend.conf
 
 The only thing you need to build static website is configuration file called `rend.conf`.

@@ -111,7 +111,7 @@ class RendRequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         print("New request for {}".format(self.requestline))
-        root = os.path.dirname(__file__)
+        root = os.path.dirname(sys.argv[0])
         to_render, _ = read_config_file(root)
         if self.path == "/":
             wanted_file = "index.html"
@@ -151,8 +151,7 @@ def run_cli():
     parser.add_argument("--serve", action="store_true", default=False, help="Starts development server")
     args = parser.parse_args()
 
-    root = os.path.dirname(__file__)
-    os.chdir(root)
+    root = os.path.dirname(sys.argv[0])
     if args.serve:
         serve()
 
